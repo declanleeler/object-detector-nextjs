@@ -1,0 +1,11 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "tailwindCSS.experimental.classRegex": [
+    ["className\\s*=\\s*\"([^\"]*)\"", 1]
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}

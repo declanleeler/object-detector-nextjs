@@ -1,0 +1,20 @@
+/* slider.css */
+input[type="range"] {
+  @apply w-full h-3 rounded-lg appearance-none cursor-pointer;
+
+  background: linear-gradient(
+    to right,
+    /*tailwind indigo-400 */ #818cf8 0%,
+    /* tailwind indigo-500 */ #6366f1 calc(var(--value) * 100%),
+    #4b5563 calc(var(--value) * 100%),
+    /* Tailwind's gray-600 */ #4b5563 100%
+  );
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-white rounded-full border border-blue-500;
+}
+
+input[type="range"]::-moz-range-thumb {
+  @apply appearance-none w-4 h-4 bg-white rounded-full border border-blue-500;
+}

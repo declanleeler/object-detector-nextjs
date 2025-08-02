@@ -1,0 +1,19 @@
+.heading1 {
+  @apply text-4xl font-bold tracking-tight text-white;
+}
+
+.heading2 {
+  @apply text-3xl font-semibold text-white;
+}
+
+.heading3 {
+  @apply text-lg font-semibold text-white;
+}
+
+.body1 {
+  @apply text-base text-white;
+}
+
+.body2 {
+  @apply text-xs text-white;
+}
