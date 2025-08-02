@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
     const arrayBuffer = await file.arrayBuffer();
     const base64String = Buffer.from(arrayBuffer).toString("base64");
-
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     return NextResponse.json({
       result: base64String,
     });

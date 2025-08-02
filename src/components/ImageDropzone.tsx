@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 
 type ImageDropzoneProps = {
   onDropAccepted: (files: File[]) => void;
-  uploadedImage?: File | null;
+  uploadedImage: File | null;
   onRemoveImage?: () => void;
 };
 
