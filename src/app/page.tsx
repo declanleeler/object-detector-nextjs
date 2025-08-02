@@ -2,20 +2,37 @@
 
 import ImageDropzone from "@/components/ImageDropzone";
 import ProbabilitySlider from "@/components/ProbabilitySlider";
+import ResultImage from "@/components/ResultImage";
 import SubmitButton from "@/components/SubmitButton";
+import { analyzeImage } from "@/utils/api/analyzeImage";
+import _ from "lodash";
 import React, { useState } from "react";
 
 const Home: React.FC = () => {
-  const [threshold, setThreshold] = useState(0.5);
+  const [threshold, setThreshold] = useState<number>(0.5);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [resultImage, setResultImage] = useState<string | null>(null);
 
   const handleImageDrop = (files: File[]): void => {
     const file = files[0]; // there will only be 1 file
     if (!file) return;
-
-    console.log("Uploading file:", file);
+    setImageFile(file);
+    console.log("helloooooo");
+    console.log(imageFile);
   };
 
-  const handleSubmit = (): void => {};
+  const handleSubmit = async (): Promise<void> => {
+    try {
+      if (!_.isNil(imageFile)) {
+        const base64Image = await analyzeImage(imageFile, threshold);
+        setResultImage(base64Image);
+      }
+
+      return undefined;
+    } catch (err) {
+      console.error("Error analyzing image:", err);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen p-8 gap-6 items-center">
@@ -24,6 +41,7 @@ const Home: React.FC = () => {
       <ImageDropzone onDropAccepted={handleImageDrop} />
       <ProbabilitySlider value={threshold} onChange={setThreshold} />
       <SubmitButton onSubmit={handleSubmit} />
+      <ResultImage resultImage={resultImage} />
     </div>
   );
 };
