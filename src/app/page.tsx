@@ -10,21 +10,25 @@ import React, { useState } from "react";
 
 const Home: React.FC = () => {
   const [threshold, setThreshold] = useState<number>(0.5);
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [resultImage, setResultImage] = useState<string | null>(null);
 
   const handleImageDrop = (files: File[]): void => {
     const file = files[0]; // there will only be 1 file
     if (!file) return;
-    setImageFile(file);
+    setUploadedImage(file);
     console.log("helloooooo");
-    console.log(imageFile);
+    console.log(uploadedImage);
+  };
+
+  const handleRemoveImage = () => {
+    setUploadedImage(null);
   };
 
   const handleSubmit = async (): Promise<void> => {
     try {
-      if (!_.isNil(imageFile)) {
-        const base64Image = await analyzeImage(imageFile, threshold);
+      if (!_.isNil(uploadedImage)) {
+        const base64Image = await analyzeImage(uploadedImage, threshold);
         setResultImage(base64Image);
       }
 
@@ -38,7 +42,11 @@ const Home: React.FC = () => {
     <div className="flex flex-col min-h-screen p-8 gap-6 items-center">
       <h1 className="heading1">Object Detection</h1>
       <p className="body1">Identify objects in your image with AI</p>
-      <ImageDropzone onDropAccepted={handleImageDrop} />
+      <ImageDropzone
+        onDropAccepted={handleImageDrop}
+        uploadedImage={uploadedImage}
+        onRemoveImage={handleRemoveImage}
+      />
       <ProbabilitySlider value={threshold} onChange={setThreshold} />
       <SubmitButton onSubmit={handleSubmit} />
       <ResultImage resultImage={resultImage} />
