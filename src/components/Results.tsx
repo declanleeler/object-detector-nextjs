@@ -29,7 +29,7 @@ const Results: React.FC<ResultsProps> = ({
           <Spinner />
         ) : (
           <img
-            src={`data:image/jpeg;base64,${resultImage}`}
+            src={resultImage}
             alt="Detection result"
             className="mt-6 rounded-lg shadow-md max-w-full"
             onLoad={onImageLoad}

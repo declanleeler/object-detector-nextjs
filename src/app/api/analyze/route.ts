@@ -1,4 +1,9 @@
 import { callHuggingFaceAPI } from "@/backend_utils/api/huggingface";
+import {
+  fileToBuffer,
+  bufferToBase64,
+  drawBoundingBoxes,
+} from "@/backend_utils/imageUtils";
 import { NextRequest, NextResponse } from "next/server";
 
 type ValidatedInput = {
@@ -10,14 +15,12 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await parseAnalyzeRequest(req);
     const { file, threshold } = validateAnalyzeFormData(formData);
-    const base64Image = await encodeFileToBase64(file);
-    const result = await callHuggingFaceAPI(base64Image, threshold / 100);
-    console.log(threshold);
-    console.log(result);
-    const base64String = Buffer.from(JSON.stringify(result)).toString("base64");
-
+    const imageBuffer = await fileToBuffer(file);
+    const base64Image = bufferToBase64(imageBuffer);
+    const detections = await callHuggingFaceAPI(base64Image, threshold);
+    const base64Result = await drawBoundingBoxes(imageBuffer, detections);
     return NextResponse.json({
-      result: base64String,
+      result: base64Result,
     });
   } catch (err) {
     return NextResponse.json(
@@ -25,11 +28,6 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-}
-
-async function encodeFileToBase64(file: File): Promise<string> {
-  const arrayBuffer = await file.arrayBuffer();
-  return Buffer.from(arrayBuffer).toString("base64");
 }
 
 async function parseAnalyzeRequest(req: NextRequest): Promise<FormData> {

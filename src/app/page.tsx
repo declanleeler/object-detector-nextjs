@@ -1,7 +1,7 @@
 "use client";
 
 import ImageDropzone from "@/components/ImageDropzone";
-import ProbabilitySlider from "@/components/ProbabilitySlider";
+import ThresholdSlider from "@/components/ThresholdSlider";
 import Results from "@/components/Results";
 import SubmitButton from "@/components/SubmitButton";
 import { analyzeImage } from "@/frontend_utils/api/analyzeImage";
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
         uploadedImage={uploadedImage}
         onRemoveImage={handleRemoveImage}
       />
-      <ProbabilitySlider value={threshold} onChange={setThreshold} />
+      <ThresholdSlider value={threshold} onChange={setThreshold} />
       <SubmitButton onSubmit={handleSubmit} disabled={_.isNil(uploadedImage)} />
       <Results
         resultRef={resultRef}
