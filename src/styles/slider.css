@@ -4,10 +4,10 @@ input[type="range"] {
 
   background: linear-gradient(
     to right,
-    /*tailwind indigo-400 */ #818cf8 0%,
-    /* tailwind indigo-500 */ #6366f1 calc(var(--value) * 100%),
+    #818cf8 0%,
+    #6366f1 calc(var(--value) * 100%),
     #4b5563 calc(var(--value) * 100%),
-    /* Tailwind's gray-600 */ #4b5563 100%
+    #4b5563 100%
   );
 }
 
