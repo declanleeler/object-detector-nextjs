@@ -48,7 +48,7 @@ const Home: React.FC = () => {
         onRemoveImage={handleRemoveImage}
       />
       <ProbabilitySlider value={threshold} onChange={setThreshold} />
-      <SubmitButton onSubmit={handleSubmit} />
+      <SubmitButton onSubmit={handleSubmit} disabled={_.isNil(uploadedImage)} />
       <ResultImage resultImage={resultImage} />
     </div>
   );

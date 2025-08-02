@@ -56,13 +56,12 @@ const ImageDropzone: React.FC<ImageDropzoneProps> = ({
                 e.stopPropagation(); // Prevent triggering dropzone click
                 onRemoveImage();
               }}
-              className="absolute top-2 right-2 bg-white bg-opacity-70 rounded-full p-1 hover:bg-opacity-100 transition"
+              className="absolute top-1 right-1 bg-white bg-opacity-70 rounded-full p-1 hover:bg-opacity-100 transition"
               aria-label="Remove image"
             >
               <X
                 className="w-5 h-5 text-gray-700 cursor-pointer hover:text-red-600 transition-colors"
                 strokeWidth={3}
-                cursor-pointer
               />
             </button>
           )}
