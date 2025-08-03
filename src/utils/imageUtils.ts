@@ -1,5 +1,5 @@
 import { createCanvas, loadImage } from "canvas";
-import { Detection } from "./api/types";
+import { Detection } from "../types/types";
 
 export async function fileToBuffer(file: File): Promise<Buffer> {
   const arrayBuffer = await file.arrayBuffer();

@@ -1,4 +1,4 @@
-import { HuggingFaceResponse } from "@/backend_utils/api/types";
+import { HuggingFaceResponse } from "@/types/types";
 
 const HF_API_URL =
   "https://api-inference.huggingface.co/models/facebook/detr-resnet-50";

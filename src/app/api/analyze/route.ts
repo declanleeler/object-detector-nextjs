@@ -1,9 +1,9 @@
-import { callHuggingFaceAPI } from "@/backend_utils/api/huggingface";
+import { callHuggingFaceAPI } from "@/services/huggingface";
 import {
   fileToBuffer,
   bufferToBase64,
   drawBoundingBoxes,
-} from "@/backend_utils/imageUtils";
+} from "@/utils/imageUtils";
 import { NextRequest, NextResponse } from "next/server";
 
 type ValidatedInput = {

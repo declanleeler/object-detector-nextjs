@@ -4,13 +4,13 @@ import ImageDropzone from "@/components/ImageDropzone";
 import ThresholdSlider from "@/components/ThresholdSlider";
 import Results from "@/components/Results";
 import SubmitButton from "@/components/SubmitButton";
-import { analyzeImage } from "@/frontend_utils/api/analyzeImage";
+import { analyzeImage } from "@/services/analyzeImage";
 import { useMutation } from "@tanstack/react-query";
 import _ from "lodash";
 import React, { useRef, useState } from "react";
 
 const Home: React.FC = () => {
-  const [threshold, setThreshold] = useState<number>(50);
+  const [threshold, setThreshold] = useState<number>(0.5);
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [resultImage, setResultImage] = useState<string | null>(null);
 

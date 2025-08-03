@@ -27,14 +27,14 @@ const Results: React.FC<ResultsProps> = ({
       <div className="w-full max-w-lg justify-center">
         {isLoading ? (
           <Spinner />
-        ) : (
+        ) : resultImage ? (
           <img
             src={resultImage}
             alt="Detection result"
             className="mt-6 rounded-lg shadow-md max-w-full"
             onLoad={onImageLoad}
           />
-        )}
+        ) : null}
       </div>
     </div>
   );
