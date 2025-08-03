@@ -60,7 +60,7 @@ const Home: React.FC = () => {
 
       <div className="bg-slate-400 self-stretch w-full h-[2px] md:w-[2px] md:h-auto" />
 
-      <div className="w-full md:w-1/2 flex">
+      <div className="w-full md:w-1/2 flex items-center">
         <Results
           isLoading={analyzeImageMutation.isPending}
           isError={analyzeImageMutation.isError}

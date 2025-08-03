@@ -14,8 +14,8 @@ const Results: React.FC<ResultsProps> = ({
   resultImage,
 }) => {
   return (
-    <div className="flex justify-center">
-      <div className="w-full max-w-lg justify-center">
+    <div className="flex justify-center items-center w-full h-full ">
+      <div className="flex w-full max-w-lg justify-center">
         {isLoading ? (
           <Spinner />
         ) : isError ? (
