@@ -21,8 +21,11 @@ export async function drawBoundingBoxes(
   ctx.drawImage(img, 0, 0);
 
   ctx.strokeStyle = "red";
-  ctx.lineWidth = 2;
-  ctx.font = "16px Arial";
+  const lineWidth = Math.max(2, Math.round(img.height * 0.005));
+  ctx.lineWidth = lineWidth;
+
+  const fontSize = Math.max(16, Math.round(img.height * 0.03));
+  ctx.font = `${fontSize}px Arial`;
 
   for (const det of detections) {
     const { xmin, ymin, xmax, ymax } = det.box;
@@ -39,7 +42,7 @@ export async function drawBoundingBoxes(
     const textMetrics = ctx.measureText(text);
     const padding = 4;
     const textWidth = textMetrics.width + padding * 2;
-    const textHeight = 20; // approximate height
+    const textHeight = fontSize + 4;
 
     // Determine text position
     const textX = xmin;
