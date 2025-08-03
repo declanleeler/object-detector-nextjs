@@ -14,38 +14,50 @@ export async function drawBoundingBoxes(
   imageBuffer: Buffer,
   detections: Detection[]
 ): Promise<string> {
-  // Load image from buffer
   const img = await loadImage(imageBuffer);
-
-  // Create canvas same size as image
   const canvas = createCanvas(img.width, img.height);
   const ctx = canvas.getContext("2d");
 
-  // Draw original image on canvas
   ctx.drawImage(img, 0, 0);
 
-  // Set style for boxes and labels
   ctx.strokeStyle = "red";
   ctx.lineWidth = 2;
   ctx.font = "16px Arial";
-  ctx.fillStyle = "red";
 
-  // Draw each bounding box
   for (const det of detections) {
     const { xmin, ymin, xmax, ymax } = det.box;
     const width = xmax - xmin;
     const height = ymax - ymin;
 
-    // Draw rectangle
+    // Draw bounding box
     ctx.strokeRect(xmin, ymin, width, height);
 
-    // Draw label and score text
+    // Format label
     const text = `${det.label} (${(det.score * 100).toFixed(1)}%)`;
-    ctx.fillText(text, xmin, ymin > 20 ? ymin - 5 : ymin + 15);
+
+    // Measure text width/height
+    const textMetrics = ctx.measureText(text);
+    const padding = 4;
+    const textWidth = textMetrics.width + padding * 2;
+    const textHeight = 20; // approximate height
+
+    // Determine text position
+    const textX = xmin;
+    const textY = ymin > 20 ? ymin - 5 : ymin + 15;
+
+    // Draw opaque background
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.fillRect(
+      textX - padding,
+      textY - textHeight + 4,
+      textWidth,
+      textHeight
+    );
+
+    // Draw text
+    ctx.fillStyle = "white";
+    ctx.fillText(text, textX, textY);
   }
 
-  // Export to base64 PNG
-  const base64 = canvas.toDataURL("image/png");
-
-  return base64;
+  return canvas.toDataURL("image/png");
 }
