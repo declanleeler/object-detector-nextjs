@@ -63,6 +63,7 @@ const Home: React.FC = () => {
       <div className="w-full md:w-1/2 flex">
         <Results
           isLoading={analyzeImageMutation.isPending}
+          isError={analyzeImageMutation.isError}
           resultImage={resultImage}
         />
       </div>
