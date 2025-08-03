@@ -42,8 +42,8 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen p-8 gap-6 items-start ">
-      <div className="w-1/2 flex flex-col gap-6 items-center">
+    <div className="flex flex-col md:flex-row min-h-screen p-8 gap-6 items-start ">
+      <div className="w-full md:w-1/2 flex flex-col gap-6 items-center">
         <h1 className="heading1">Object Detection</h1>
         <p className="body1">Identify objects in your image with AI</p>
         <ImageDropzone
@@ -58,9 +58,9 @@ const Home: React.FC = () => {
         />
       </div>
 
-      <div className="w-[2px] bg-slate-400 self-stretch" />
+      <div className="bg-slate-400 self-stretch w-full h-[2px] md:w-[2px] md:h-auto" />
 
-      <div className="w-1/2 ">
+      <div className="w-full md:w-1/2 flex">
         <Results
           isLoading={analyzeImageMutation.isPending}
           resultImage={resultImage}
