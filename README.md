@@ -1,6 +1,6 @@
 # 🧠 Object Detection App
 
-This is a full-stack object detection web application built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **FastAPI**-like API routes (via Next.js API routes). It uses **Hugging Face’s DETR model** (`facebook/detr-resnet-50`) to detect and label objects in uploaded images.
+This is a full-stack object detection web application built with **Next.js**, **TypeScript**, and **Tailwind CSS**. It uses **Hugging Face’s DETR model** (`facebook/detr-resnet-50`) to detect and label objects in uploaded images.
 
 ## ✨ Features
 
