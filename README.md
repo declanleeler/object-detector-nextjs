@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Object Detection App
 
-## Getting Started
+This is a full-stack object detection web application built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **FastAPI**-like API routes (via Next.js API routes). It uses **Hugging Face’s DETR model** (`facebook/detr-resnet-50`) to detect and label objects in uploaded images.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🖼️ Drag-and-drop image upload
+- 🎯 Adjustable detection confidence threshold
+- 📦 Server-side call to Hugging Face inference API
+- 🖌️ Overlaid bounding boxes rendered on image
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Clone the Repo
 
-## Learn More
+### 2. CD into the folder
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Install dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm install`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Setup environment variables
 
-## Deploy on Vercel
+- create a `.env` file in the root level of the repo
+- add `HF_API_KEY=your_huggingface_token_here`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Run the development server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev`
