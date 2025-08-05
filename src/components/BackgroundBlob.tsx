@@ -1,6 +1,7 @@
 export default function BackgroundBlob() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none select-none">
+      <div className="absolute inset-0 bg-[#0a0a0a]" />
       <div
         className="absolute top-[-100px] left-[-100px] w-[600px] h-[600px] rounded-full"
         style={{
